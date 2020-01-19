@@ -1,6 +1,6 @@
-import recipient from './recipient';
+import recipients from './recipient';
 import { combineReducers } from 'redux';
 const rootReducer = combineReducers({
-    recipient
+    recipients
 });
 export default rootReducer;

@@ -7,6 +7,11 @@ import { Provider } from 'react-redux';
 
 import createStore from './store';
 
+// let store = createStore({recipients:[
+//     {name: "Laura Kane",
+//     budget: 50.00,
+//     uuid: "safasfdasfasfd"}
+// ]});
 let store = createStore();
 
 ReactDOM.render(

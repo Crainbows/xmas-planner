@@ -5,13 +5,13 @@ export default(state = [], payload) => {
         case ADD_RECIPIENT:
             return Object.assign({}, state, {
                 recipients: [
-                ...state.recipient,
-                {
-                    gid: payload.gid,
-                    uuid: payload.uuid,
-                    name: payload.name,
-                    budget: payload.budget,
-                }
+                    ...state.recipients,
+                    {
+                        gid: payload.gid,
+                        uuid: payload.uuid,
+                        name: payload.name,
+                        budget: payload.budget,
+                    }
                 ]
             })
         default:
