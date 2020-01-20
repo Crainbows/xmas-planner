@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import AddUserButton from "./addUser";
 
 import './core.scss';
 import { connect } from "react-redux";
@@ -25,6 +26,7 @@ class Core extends Component{
                 </nav>
                 <div>
                     {recipientList}
+                    <AddUserButton></AddUserButton>
                 </div>
             </main>
         )

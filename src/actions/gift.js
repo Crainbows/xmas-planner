@@ -7,7 +7,7 @@ const addNewGift = (gift) => {
     return {
         type: 'add',
         giftid: "gift:"+CreateUUID(),
-        recipientid: 
+        recipientid: gift.recipientid,
         name: gift.name,
         cost: gift.cost,
     };

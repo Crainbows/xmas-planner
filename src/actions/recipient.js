@@ -8,8 +8,8 @@ const addNewRecipient = (recipient) => {
         type: 'add',
         gid: 0, // Set group to zero until groups implemented
         uuid: "recipient:"+CreateUUID(),
-        name: recipient.name,
-        budget: recipient.budget,
+        name: "Joe Bloggs", //recipient.name,
+        budget: 50.00, //recipient.budget,
     };
   }
 
