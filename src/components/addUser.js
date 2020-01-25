@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ADD_RECIPIENT } from "../actions/recipient";
+import { ADD_RECIPIENT, addNewRecipient } from "../actions/recipient";
 
 import './addUser.scss';
 import { connect } from "react-redux";
@@ -24,7 +24,7 @@ class AddUserButton extends Component{
 
 const mapDispatchToProps = (dispatch) => {
     return {
-           addRecipient: () => dispatch({ type: ADD_RECIPIENT }),
+                addRecipient: () => dispatch(addNewRecipient()),
            };
   };
 

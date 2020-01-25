@@ -2,14 +2,13 @@ import {CreateUUID} from '../utils/unique';
 
 const ADD_RECIPIENT = 'ADD_RECIPIENT'
 
-const addNewRecipient = (recipient) => {
-    console.log('adding item:', recipient.name);
+const addNewRecipient = () => {
     return {
-        type: 'add',
+        type: 'ADD_RECIPIENT',
         gid: 0, // Set group to zero until groups implemented
         uuid: "recipient:"+CreateUUID(),
         name: "Joe Bloggs", //recipient.name,
-        budget: 50.00, //recipient.budget,
+        budget: 0.00, //recipient.budget,
     };
   }
 
