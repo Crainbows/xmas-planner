@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AddUserButton from "./addUser";
+import RecipientCard from "./recipientCard"
 
 import './core.scss';
 import { connect } from "react-redux";
@@ -15,7 +16,7 @@ class Core extends Component{
         if (this.props.recipients.length === 0){
             recipientList = <div>Nobody here</div>
         } else {
-            recipientList = this.props.recipients.map(recipient => <div key={recipient.uuid}>{recipient.name}</div>);
+            recipientList = this.props.recipients.map(recipient => <RecipientCard key={recipient.uuid} recipient={recipient}></RecipientCard>);
         }
         return (
             <main>
@@ -24,7 +25,7 @@ class Core extends Component{
                     <div>This Year</div>
                     <button>2021</button>
                 </nav>
-                <div>
+                <div className="recipient-list">
                     {recipientList}
                     <AddUserButton></AddUserButton>
                 </div>

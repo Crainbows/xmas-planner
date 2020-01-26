@@ -2,4 +2,19 @@
     position: fixed;
     right: 2rem;
     bottom: 2rem;
+    height: 3rem;
+    width: 3rem;
+    padding: 0;
+    font-size: 2rem;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    border: 2px solid var(--color-text);
+    border-radius: 50%;
+    cursor: pointer;
+    transition-property: background;
+    transition-duration: 0.2s;
+}
+
+.add-recipient:hover {
+    background-color: var(--color-highlight);
 }
