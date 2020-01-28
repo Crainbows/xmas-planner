@@ -16,7 +16,9 @@ class Core extends Component{
         if (this.props.recipients.length === 0){
             recipientList = <div>Nobody here</div>
         } else {
-            recipientList = this.props.recipients.map(recipient => <RecipientCard key={recipient.uuid} recipient={recipient}></RecipientCard>);
+            recipientList = this.props.recipients.map(recipient => 
+                <RecipientCard key={recipient.uuid} recipient={recipient}></RecipientCard>
+            );
         }
         return (
             <main>
