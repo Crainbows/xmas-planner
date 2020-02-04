@@ -10,40 +10,25 @@
     grid-template-columns: auto 4rem;
     border: 2px solid var(--color-highlight);
     border-radius: 0.5rem;
-    cursor: pointer;
-    transition-property: background-color;
-    transition-duration: 0.1s;
-
 
     .recipient-name {
         justify-content: start;
         text-align: start;
     }
 
-    .progress {
-      padding-top: 0.2rem;
-      grid-column-start: 1;
-      grid-column-end: 3;
-
-      .progress-value {
-        // animation: load 1s normal forwards;
-        transition-property: background-color width;
-        transition-duration: 1s;
-        background-color: white;
-        width: 0%;
-        // box-shadow: 0 10px 40px -10px #fff;
-        // border-radius: 100px;
-        // background: #fff;
-        height: 4px;
+    .progress-value {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        animation: load 1s normal forwards;
+        box-shadow: 0 10px 40px -10px #fff;
+        border-radius: 100px;
+        background: #fff;
+        height: 2px;
+        width: 0;
       }
-
       @keyframes load {
-        0% { background-color: red; width: 0%; }
-        100% {  }
+        0% { background-color: red; width: 0; }
+        50% { background-color: yellow;}
+        100% { background-color: green; width: 100%; }
       }
-    }
-}
-
-.recipient-card:hover {
-  background-color: var(--color-highlight);
 }

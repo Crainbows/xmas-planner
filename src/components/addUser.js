@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { addNewRecipient } from "../actions/recipient";
+import { ADD_RECIPIENT, addNewRecipient } from "../actions/recipient";
 
 import './addUser.scss';
 import { connect } from "react-redux";
