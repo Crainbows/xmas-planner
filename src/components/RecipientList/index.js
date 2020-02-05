@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import RecipientCard from "../recipientCard"
+import RecipientCard from "../RecipientCard"
 import './RecipientList.scss';
 
 class RecipientList extends Component {
