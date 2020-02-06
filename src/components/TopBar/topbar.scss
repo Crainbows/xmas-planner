@@ -1,7 +1,7 @@
 nav {
     font-size: 2em;
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto 50% auto;
 
     button {
         justify-self: end;
