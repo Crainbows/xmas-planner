@@ -5,8 +5,8 @@ import RecipientCard from "../RecipientCard"
 import './RecipientList.scss';
 
 class RecipientList extends Component {
-    contructor(props) {
-        // super(props);
+    constructor(props) {
+        super(props);
         this.setState({});
     }
 
