@@ -6,9 +6,9 @@ const addNewRecipient = () => {
     return {
         type: 'ADD_RECIPIENT',
         gid: 0, // Set group to zero until groups implemented
-        uuid: "recipient:"+CreateUUID(),
+        uuid: CreateUUID(),
         name: "Joe Bloggs", //recipient.name,
-        budget: 0.00, //recipient.budget,
+        budget: 10.00, //recipient.budget,
     };
   }
 

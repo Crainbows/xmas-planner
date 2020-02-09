@@ -19,7 +19,7 @@ class RecipientCard extends Component{
 
     render() {
         let classes = this.state.expanded ? "recipient-card expanding-card expanded" : "recipient-card expanding-card";
-        let percentage = Math.random() * 100;
+        let percentage = 2.5 + (Math.random() * 97.5);
         return (
             <div className={classes} onClick={this.handleClick}>
                 <div className="recipient-name">{this.props.recipient.name}</div>
