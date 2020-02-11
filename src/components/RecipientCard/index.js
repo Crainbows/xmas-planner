@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import AddUserButton from "./addUser";
 
 import './recipientCard.scss';
+import RecipientGiftList from "../RecipientGiftList";
 // import { connect } from "react-redux";
 
 class RecipientCard extends Component{
@@ -27,7 +28,8 @@ class RecipientCard extends Component{
                 <div className="progress-container" style={{maxWidth: `${percentage}%`}}>
                     <div className="progress-value"></div>
                 </div>
-                <div className="expandable">TEST TEXT<br />TEST TEXT<br />TEST TEXT<br />TEST TEXT<br />TEST TEXT<br /></div>
+                <RecipientGiftList uuid={this.props.uuid}></RecipientGiftList>
+                {/* <div className="expandable">TEST TEXT<br />TEST TEXT<br />TEST TEXT<br />TEST TEXT<br />TEST TEXT<br /></div> */}
             </div>
         )
     }

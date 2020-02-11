@@ -11,7 +11,7 @@ class RecipientList extends Component {
             recipientList = <div className="no-recipients">Nobody here</div>
         } else {
             recipientList = Object.keys(this.props.recipients).map(key => {
-                return <RecipientCard key={key} recipient={this.props.recipients[key]}></RecipientCard>;
+                return <RecipientCard key={key} uuid={key} recipient={this.props.recipients[key]}></RecipientCard>;
             });
         }
         return (

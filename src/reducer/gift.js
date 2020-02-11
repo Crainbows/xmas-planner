@@ -8,6 +8,7 @@ export default(state = [], payload) => {
                     [payload.uuid]: {
                         recipientuuid: payload.recipientid,
                         name: payload.name,
+                        year: payload.year,
                         price: payload.price,
                         isPurchased: payload.isPurchased,
                         isDelivered: payload.isDelivered,
