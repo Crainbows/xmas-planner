@@ -7,11 +7,33 @@ import { Provider } from 'react-redux';
 
 import createStore from './store';
 
+import faker from 'faker';
 // let store = createStore({recipients:[
-//     {name: "Laura Kane",
-//     budget: 50.00,
-//     uuid: "safasfdasfasfd"}
-// ]});
+//     {
+//         name: faker.name.findName(),
+//         budget: faker.commerce.price(),
+//         uuid: "safasfdasfasfd"
+//     },
+//     {
+//         name: faker.name.findName(),
+//         budget: faker.commerce.price(),
+//         uuid: "safasfdacccccsfasfd"
+//     },
+//     {
+//         name: faker.name.findName(),
+//         budget: faker.commerce.price(),
+//         uuid: "safasfxxxxxdasfasfd"
+//     }
+// ],
+// gifts:{
+//     giftid1: {
+//         recipientid: "0",
+//         name: "lipbalm",
+//         price: faker.commerce.price(),
+//         year: 2020
+//     }
+// }
+// });
 let store = createStore();
 
 ReactDOM.render(
