@@ -1,29 +1,12 @@
-
-html
-  --color-background: #282c34
-  --color-highlight: #393f4a
-  --color-text: #f0f2f4
-
-// @media (prefers-color-scheme: dark)
-//   html
-//     --color-background: #282c34
-//     --color-highlight: #393f4a
-//     --color-text: #f0f2f4
-
-// @media (prefers-color-scheme: light)
-//   html
-//     --color-background: #f0f2f4
-//     --color-highlight: #393f4a
-//     --color-text: #282c34
-
+@import "~normalize.css";
+@import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/core/lib/scss/variables.scss";
+@import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
 
 body
   margin: 0
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
-  background-color: var(--color-background)
-  color: var(--color-text)
+  background-color: $dark-gray3
+  color: $light-gray5
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-
-code
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace
