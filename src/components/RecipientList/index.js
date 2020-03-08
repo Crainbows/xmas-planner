@@ -3,12 +3,30 @@ import { connect } from "react-redux";
 
 import RecipientCard from "../RecipientCard"
 import './RecipientList.scss';
+import { Button, NonIdealState, Intent } from "@blueprintjs/core";
+import { IconNames } from "@blueprintjs/icons";
+import { addNewRecipient } from '../../actions/recipient';
+
 
 class RecipientList extends Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick() {
+        this.props.addRecipient();
+    }
+
     render() {
         let recipientList;
-        if (this.props.recipients.length === 0){
-            recipientList = <div className="no-recipients">Nobody here</div>
+        if (Object.keys(this.props.recipients).length === 0 && this.props.recipients.constructor === Object){
+            let action = <Button icon={IconNames.NEW_PERSON} intent={Intent.PRIMARY} text="Add Someone" onClick={this.handleClick} />
+            recipientList = (<NonIdealState
+            icon={IconNames.ISSUE}
+            title="Nobody here&hellip;"
+            action={action}
+        />)
         } else {
             recipientList = Object.keys(this.props.recipients).map(key => {
                 return <RecipientCard key={key} uuid={key} recipient={this.props.recipients[key]}></RecipientCard>;
@@ -28,4 +46,10 @@ function mapStateToProps(state) {
     }
   }
 
-export default connect(mapStateToProps)(RecipientList)
+const mapDispatchToProps = (dispatch) => {
+return {
+            addRecipient: () => dispatch(addNewRecipient()),
+        };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipientList)

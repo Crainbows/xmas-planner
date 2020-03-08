@@ -1,23 +1,37 @@
 import React, { Component } from "react";
-// import AddUserButton from "./addUser";
 import { connect } from "react-redux";
-// import './recipientCard.scss';
-// import { connect } from "react-redux";
+import { Collapse, Button } from '@blueprintjs/core';
+import { IconNames } from "@blueprintjs/icons";
+import './recipientGiftList.sass';
 
 class RecipientGiftList extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {expanded: false};
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.setState(state => {
+            return {expanded: !this.state.expanded}
+        });
+    }
+
     render() {
-        console.log(this.props.uuid + " has " + Object.keys(this.props.gifts).length + " gifts");
         let names = Object.entries(this.props.gifts).map(x => x[1].name);
-        console.debug(names);
+        let icon = this.state.expanded ? IconNames.CHEVRON_UP : IconNames.CHEVRON_DOWN;
         return (
-                <div className="expandable">
+            <div className="giftlist">
+                <Collapse isOpen={this.state.expanded}>
                     {names}
                     TEST TEXT<br />
                     TEST TEXT<br />
                     TEST TEXT<br />
                     TEST TEXT<br />
                     TEST TEXT<br />
-                </div>
+                </Collapse>
+                <Button className="expand-gift-list" icon={icon} minimal={true} onClick={this.handleClick} />
+            </div>
         )
     }
 }

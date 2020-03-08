@@ -4,7 +4,7 @@ const ADD_GIFT = 'ADD_GIFT'
 const UPDATE_GIFT = 'UPDATE_GIFT'
 
 const addGift = (gift) => {
-    console.log('adding item:', gift.name);
+    // console.log('adding item:', gift.name);
     return {
         type: ADD_GIFT,
         uuid: CreateUUID(),
@@ -19,7 +19,7 @@ const addGift = (gift) => {
 }
 
 const updateGift = (gift) => {
-    console.log('updating item:', gift.name);
+    // console.log('updating item:', gift.name);
     return {
         type: UPDATE_GIFT,
         uuid: CreateUUID(),

@@ -1,7 +1,10 @@
 .recipient-list {
+    overflow-y: auto;
+    margin-top: 1rem;
     display: grid;
+    max-height: calc(100vh - 170px);
     grid-template-columns: auto auto auto;
-    .no-recipients{
+    .bp3-non-ideal-state{
         grid-column-start: 2;
         margin-top: 3rem;
         margin-bottom: 3rem;
