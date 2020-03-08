@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './topbar.scss';
 import { incrementYear, decrementYear } from '../../actions/year';
-
+import { Button } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 
 class TopBar extends Component {
@@ -30,9 +30,11 @@ class TopBar extends Component {
         }
         return (
             <nav>
-                <button onClick={this.decrementYear}>{this.props.year-1}</button>
+                {/* <button onClick={this.decrementYear}>{this.props.year-1}</button> */}
+                <Button icon="arrow-left" text={this.props.year-1} onClick={this.decrementYear} />
                 <div>{centerBar}</div>
-                <button onClick={this.incrementYear}>{this.props.year+1}</button>
+                {/* <button onClick={this.incrementYear}>{this.props.year+1}</button> */}
+                <Button rightIcon="arrow-right" text={this.props.year+1} onClick={this.incrementYear} />
             </nav>
         );
     }

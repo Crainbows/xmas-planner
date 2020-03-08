@@ -1,35 +1,14 @@
-
+@import "~@blueprintjs/core/lib/scss/variables.scss";
   
-.App
-  display: grid
-  grid-template-rows: 4em auto
-  grid-template-columns: auto
-  text-align: center
+.app
+  transition-property: color, background-color
+  transition-duration: 0.2s
+  transition-timing-function: linear
 
-  header
-    display: grid
-    grid-template-rows: auto
-    grid-template-columns: 12em auto 12em
+.bp3-dark 
+  background-color: $dark-gray3
+  color: $light-gray5
 
-    button
-      width: 8em
-      height: 2em
-      justify-self: center
-      align-self: center
-      color: var(--color-text)
-      border: 0.2em solid var(--color-text)
-      border-radius: 1em
-      cursor: pointer
-      background-color: var(--color-background)
-      grid-column-start: 3
-      grid-column-end: 3
-      transition-property: background;
-      transition-duration: 0.1s;
-      transition-timing-function: ease-out;
-
-    button:hover
-      background-color: var(--color-highlight)
-
-    .logo
-      justify-self: center
-      align-self: center
+.bp3-light
+  background-color: $light-gray5
+  color: $dark-gray3

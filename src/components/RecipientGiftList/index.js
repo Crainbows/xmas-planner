@@ -1,23 +1,22 @@
 import React, { Component } from "react";
 // import AddUserButton from "./addUser";
 import { connect } from "react-redux";
+import { Collapse } from '@blueprintjs/core';
 // import './recipientCard.scss';
 // import { connect } from "react-redux";
 
 class RecipientGiftList extends Component{
     render() {
-        console.log(this.props.uuid + " has " + Object.keys(this.props.gifts).length + " gifts");
         let names = Object.entries(this.props.gifts).map(x => x[1].name);
-        console.debug(names);
         return (
-                <div className="expandable">
+                <Collapse isOpen={this.props.expanded}>
                     {names}
                     TEST TEXT<br />
                     TEST TEXT<br />
                     TEST TEXT<br />
                     TEST TEXT<br />
                     TEST TEXT<br />
-                </div>
+                </Collapse>
         )
     }
 }

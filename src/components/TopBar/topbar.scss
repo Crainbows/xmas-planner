@@ -1,24 +1,16 @@
 nav {
+    margin-top: 1rem;
     font-size: 2em;
     display: grid;
     grid-template-columns: auto 50% auto;
 
+    div {
+        justify-self: center;
+    }
     button {
         justify-self: end;
-        width: 5rem;
-        font-size: 0.75em;
-        color: var(--color-text);
-        background-color: var(--color-background);
-        border: none;
-        border-bottom: 0.1rem solid var(--color-text);
-        cursor: pointer;
-        transition-property: background;
-        transition-duration: 0.2s;
     }
     button:last-of-type {
         justify-self: start;
-    }
-    button:hover {
-        background-color: var(--color-highlight);            
     }
 }
