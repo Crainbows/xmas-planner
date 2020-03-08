@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import './topbar.scss';
 import { incrementYear, decrementYear } from '../../actions/year';
-import { Button } from '@blueprintjs/core';
+import { Button, ButtonGroup } from '@blueprintjs/core';
 import { connect } from 'react-redux';
+import { IconNames } from '@blueprintjs/icons';
+import { addNewRecipient } from "../../actions/recipient";
 
 class TopBar extends Component {
     constructor(props) {
         super(props);
         this.incrementYear = this.props.incrementYear.bind(this);
         this.decrementYear = this.props.decrementYear.bind(this);
+        this.addRecipient = this.props.addRecipient.bind(this);
     }
 
     render() {
@@ -28,12 +31,19 @@ class TopBar extends Component {
                 centerBar = this.props.year;
                 break;
         }
+        let controls = (<ButtonGroup>
+            <Button text="Add Recipient" icon={IconNames.NEW_PERSON} onClick={this.addRecipient}/>
+            <Button text="Gift List" icon={IconNames.LIST_DETAIL_VIEW} />
+        </ButtonGroup>)
         return (
-            <nav>
-                {/* <button onClick={this.decrementYear}>{this.props.year-1}</button> */}
+            <nav className="topbar">
                 <Button icon="arrow-left" text={this.props.year-1} onClick={this.decrementYear} />
-                <div>{centerBar}</div>
-                {/* <button onClick={this.incrementYear}>{this.props.year+1}</button> */}
+                <div>
+                    <span>
+                        {centerBar}
+                    </span>
+                    {(Object.keys(this.props.people).length === 0 && this.props.people.constructor === Object) ? "" : controls}
+                </div>
                 <Button rightIcon="arrow-right" text={this.props.year+1} onClick={this.incrementYear} />
             </nav>
         );
@@ -42,7 +52,8 @@ class TopBar extends Component {
 
 function mapStateToProps(state) {
     return { 
-        year: state.year
+        year: state.year,
+        people: state.recipients,
     }
 }
 
@@ -50,6 +61,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
             incrementYear: () => dispatch(incrementYear()),
             decrementYear: () => dispatch(decrementYear()),
+            addRecipient: () => dispatch(addNewRecipient()),
         };
   };
 

@@ -1,6 +1,6 @@
 import {ADD_RECIPIENT} from '../actions/recipient';
 
-export default(state = [], payload) => {
+export default(state = {}, payload) => {
     switch (payload.type) {
         case ADD_RECIPIENT:
             return {...state,

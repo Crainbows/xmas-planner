@@ -1,10 +1,7 @@
 import React, { Component } from "react"
-import AddUserButton from "./AddUser"
-
 import TopBar from './TopBar'
-
-import './core.scss';
 import RecipientList from "./RecipientList";
+import './core.scss';
 
 class Core extends Component{
     render() {
@@ -12,7 +9,6 @@ class Core extends Component{
             <main>
                 <TopBar></TopBar>
                 <RecipientList></RecipientList>
-                <AddUserButton></AddUserButton>
             </main>
         )
     }

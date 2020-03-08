@@ -1,4 +1,4 @@
-nav {
+nav.topbar {
     margin-top: 1rem;
     font-size: 2em;
     display: grid;
@@ -6,8 +6,18 @@ nav {
 
     div {
         justify-self: center;
+        text-align: center;
+        span {
+            // justify-self: center;
+            display: block;
+        }
+        div {
+            margin-top: 1rem;
+        }
+
     }
     button {
+        align-self: start;
         justify-self: end;
     }
     button:last-of-type {
