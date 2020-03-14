@@ -16,7 +16,6 @@ const AppTopBar = () => {
     const dispatch = useDispatch();
     const DARKMODE = useSelector(state => state.darkmode);
     let themeIcon = DARKMODE ? IconNames.FLASH : IconNames.MOON;
-    console.log(themeIcon);
     return (
     <Navbar>
         <NavbarGroup align={Alignment.LEFT}>

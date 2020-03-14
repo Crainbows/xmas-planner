@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 // import AddUserButton from "./addUser";
-import { Card, Elevation, Intent, ProgressBar, Button } from "@blueprintjs/core";
+import { Card, Elevation, Intent, ProgressBar } from "@blueprintjs/core";
 
 import './recipientCard.scss';
 import RecipientGiftList from "../RecipientGiftList";
-import { IconNames } from "@blueprintjs/icons";
-// import { connect } from "react-redux";
+import RecipientCardMenu from './RecipientCardMenu';
 
 class RecipientCard extends Component{
 
@@ -17,7 +16,7 @@ class RecipientCard extends Component{
             <Card interactive={true} elevation={Elevation.TWO} className="recipient-card" onClick={this.handleClick}>
                 <h4>{this.props.recipient.name}</h4>
                 <div>{this.props.recipient.budget}</div>
-                <Button minimal={true} icon={IconNames.MORE} className="cardmenu" />
+                <RecipientCardMenu uuid={this.props.uuid}></RecipientCardMenu>
                 <ProgressBar animate={false} stripes={false} intent={status} value={percentage} />
                 <RecipientGiftList uuid={this.props.uuid}></RecipientGiftList>
             </Card>
