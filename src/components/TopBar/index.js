@@ -48,7 +48,7 @@ class TopBar extends Component {
                     <span>
                         {centerBar}
                     </span>
-                    {(Object.keys(this.props.people).length === 0 && this.props.people.constructor === Object) ? "" : controls}
+                    {this.props.people.length === 0 ? "" : controls}
                 </div>
                 <Button rightIcon="arrow-right" text={this.props.year+1} onClick={this.incrementYear} />
                 <GiftDrawer />

@@ -1,8 +1,8 @@
-import {ADD_RECIPIENT, DELETE_RECIPIENT} from '../actions/recipient';
+import {CREATE_RECIPIENT, UPDATE_RECIPIENT, DELETE_RECIPIENT} from '../actions/recipient';
 
-export default(state = {}, payload) => {
+export default(state = [], payload) => {
     switch (payload.type) {
-        case ADD_RECIPIENT:
+        case CREATE_RECIPIENT:
             return [...state,
                     {
                         uuid: payload.uuid,
@@ -11,8 +11,22 @@ export default(state = {}, payload) => {
                         budget: payload.budget,
                     }
                 ];
+        case UPDATE_RECIPIENT:
+            console.debug(payload);
+            return state.map( item => {
+                if (item.uuid === payload.uuid) {
+                    return {
+                        uuid: item.uuid,
+                        gid: item.gid,
+                        name: payload.name,
+                        budget: payload.budget,
+                    };
+                } else {
+                    return item;
+                }
+            });
         case DELETE_RECIPIENT:
-            return state.filter;
+            return state.filter(recipient => recipient.uuid !== payload.uuid);
         default:
             return state;
     }

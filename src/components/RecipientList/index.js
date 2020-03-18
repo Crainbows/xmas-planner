@@ -20,7 +20,7 @@ class RecipientList extends Component {
 
     render() {
         let recipientList;
-        if (Object.keys(this.props.recipients).length === 0 && this.props.recipients.constructor === Object){
+        if (this.props.recipients.length === 0){
             let action = <Button icon={IconNames.NEW_PERSON} intent={Intent.PRIMARY} text="Add Someone" onClick={this.handleClick} />
             recipientList = (<NonIdealState
             icon={IconNames.ISSUE}
@@ -29,7 +29,7 @@ class RecipientList extends Component {
         />)
         } else {
             recipientList = Object.keys(this.props.recipients).map(key => {
-                return <RecipientCard key={key} uuid={key} recipient={this.props.recipients[key]}></RecipientCard>;
+                return <RecipientCard key={key} uuid={this.props.recipients[key].uuid} recipient={this.props.recipients[key]}></RecipientCard>;
             });
         }
         return (
