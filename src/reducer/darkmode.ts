@@ -1,6 +1,10 @@
 import {TOGGLE_DARK_MODE} from '../actions/darkmode';
 
-export default(state = true, payload) => {
+interface DarkMode {
+    type: string
+}
+
+export default(state :boolean = true, payload: DarkMode) => {
     switch (payload.type) {
         case TOGGLE_DARK_MODE:
             return !state

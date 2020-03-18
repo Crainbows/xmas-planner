@@ -1,6 +1,10 @@
 import {INCREMENT_YEAR, DECREMENT_YEAR} from '../actions/year';
 
-export default(state = new Date().getFullYear(), payload) => {
+interface Year {
+    type: string
+}
+
+export default(state = new Date().getFullYear(), payload: Year) => {
     switch (payload.type) {
         case INCREMENT_YEAR:
             return state+1

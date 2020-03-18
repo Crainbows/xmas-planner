@@ -3,7 +3,17 @@ import {CreateUUID} from '../utils/unique';
 const ADD_GIFT = 'ADD_GIFT'
 const UPDATE_GIFT = 'UPDATE_GIFT'
 
-const addGift = (gift) => {
+type Gift = {
+    recipientid: string,
+    name: string,
+    price: string,
+    isPurchased: boolean,
+    isDelivered: boolean,
+    isWrapped: boolean,
+    isMade: boolean,
+}
+
+const addGift = (gift: Gift) => {
     // console.log('adding item:', gift.name);
     return {
         type: ADD_GIFT,
@@ -18,7 +28,7 @@ const addGift = (gift) => {
     };
 }
 
-const updateGift = (gift) => {
+const updateGift = (gift: Gift) => {
     // console.log('updating item:', gift.name);
     return {
         type: UPDATE_GIFT,

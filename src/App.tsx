@@ -5,7 +5,7 @@ import AppTopBar from './components/AppTopBar';
 import {useSelector} from 'react-redux';
 
 function App() {
-  let theme = useSelector(state => state.darkmode) ? "bp3-dark" : "bp3-light";
+  let theme: any = useSelector((state: any) => state.darkmode) ? "bp3-dark" : "bp3-light";
   return (
     <div className={"app " + theme}>
       <AppTopBar></AppTopBar>

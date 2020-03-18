@@ -1,6 +1,19 @@
 import {UPDATE_GIFT, ADD_GIFT} from '../actions/gift';
 
-export default(state = [], payload) => {
+interface Gift {
+    type: string,
+    uuid: string,
+    recipientid: string,
+    name: string,
+    year: number,
+    price: number,
+    isPurchased: boolean,
+    isDelivered: boolean,
+    isWrapped: boolean,
+    isMade: boolean,
+}
+
+export default(state = [], payload: Gift) => {
     switch (payload.type) {
         case UPDATE_GIFT:
         case ADD_GIFT:

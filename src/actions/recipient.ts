@@ -4,6 +4,12 @@ const CREATE_RECIPIENT = 'CREATE_RECIPIENT';
 const UPDATE_RECIPIENT = 'UPDATE_RECIPIENT';
 const DELETE_RECIPIENT = 'DELETE_RECIPIENT';
 
+type Recipient = {
+    uuid: string,
+    name: string,
+    budget: string,
+}
+
 const addNewRecipient = () => {
     return {
         type: CREATE_RECIPIENT,
@@ -14,7 +20,7 @@ const addNewRecipient = () => {
     };
   }
 
-  const updateRecipient = (payload) => {
+  const updateRecipient = (payload: Recipient) => {
     return {
         type: UPDATE_RECIPIENT,
         uuid: payload.uuid,
@@ -23,7 +29,7 @@ const addNewRecipient = () => {
     };
   }
 
-const deleteRecipient = (uuid) => {
+const deleteRecipient = (uuid: string) => {
     return {
         type: DELETE_RECIPIENT,
         uuid,
