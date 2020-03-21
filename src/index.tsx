@@ -7,7 +7,24 @@ import { Provider } from 'react-redux';
 
 import createStore from './store';
 
-let store = createStore();
+let initalState = {
+    recipients: [
+        {
+            name: "jim",
+            budget: 12,
+            uuid: "x",
+        }
+
+    ],
+    gifts: {
+        pqx: {
+            name: "LIPBALM",
+            year: 2020,
+            recipientid: "x",
+        }
+    }
+}
+let store = createStore(initalState);
 
 ReactDOM.render(
 <Provider store={store}>

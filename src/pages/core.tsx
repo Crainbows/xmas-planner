@@ -1,6 +1,6 @@
 import React from "react"
-import TopBar from './TopBar'
-import RecipientList from "./RecipientList";
+import TopBar from '../components/TopBar'
+import RecipientList from "../components/RecipientList";
 import './core.scss';
 
 const Core: React.FC = () => {

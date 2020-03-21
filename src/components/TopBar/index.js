@@ -2,75 +2,49 @@ import React, { Component } from 'react';
 import './topbar.scss';
 import { incrementYear, decrementYear } from '../../actions/year';
 import { Button, ButtonGroup } from '@blueprintjs/core';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IconNames } from '@blueprintjs/icons';
 import { addNewRecipient } from "../../actions/recipient";
 import { toggleGiftDrawer } from "../../actions/giftDrawer";
 import GiftDrawer from '../GiftDrawer'
 
-class TopBar extends Component {
-    constructor(props) {
-        super(props);
-        this.incrementYear = this.props.incrementYear.bind(this);
-        this.decrementYear = this.props.decrementYear.bind(this);
-        this.addRecipient = this.props.addRecipient.bind(this);
-        this.toggleGiftDrawer = this.props.toggleGiftDrawer.bind(this);
-        this.state = {
-            drawerStatus: false
-        };
+const TopBar = () => {
+    const dispatch = useDispatch();
+    const year = useSelector(state => state.year);
+    const numberOfRecipients = useSelector(state => state.recipients.length);
+    const thisYear = new Date().getFullYear()
+    let centerBar;
+    switch(year){
+        case thisYear:
+            centerBar = "This Year"
+            break;
+        case thisYear-1:
+            centerBar = "Last Year"
+            break;
+        case thisYear+1:
+            centerBar = "Next Year"
+            break;
+        default:
+            centerBar = year;
+            break;
     }
-
-    render() {
-        const thisYear = new Date().getFullYear()
-        let centerBar;
-        switch(this.props.year){
-            case thisYear:
-                centerBar = "This Year"
-                break;
-            case thisYear-1:
-                centerBar = "Last Year"
-                break;
-            case thisYear+1:
-                centerBar = "Next Year"
-                break;
-            default:
-                centerBar = this.props.year;
-                break;
-        }
-        let controls = (<ButtonGroup>
-            <Button text="Add Recipient" icon={IconNames.NEW_PERSON} onClick={this.addRecipient}/>
-            <Button text="Gift List" icon={IconNames.LIST_DETAIL_VIEW} onClick={this.toggleGiftDrawer}/>
-        </ButtonGroup>)
-        return (
-            <nav className="topbar">
-                <Button icon="arrow-left" text={this.props.year-1} onClick={this.decrementYear} />
-                <div>
-                    <span>
-                        {centerBar}
-                    </span>
-                    {this.props.people.length === 0 ? "" : controls}
-                </div>
-                <Button rightIcon="arrow-right" text={this.props.year+1} onClick={this.incrementYear} />
-                <GiftDrawer />
-            </nav>
-        );
-    }
+    let controls = (<ButtonGroup>
+        <Button text="Add Recipient" icon={IconNames.NEW_PERSON} onClick={() => dispatch(addNewRecipient())}/>
+        <Button text="Gift List" icon={IconNames.LIST_DETAIL_VIEW} onClick={() => dispatch(toggleGiftDrawer())}/>
+    </ButtonGroup>)
+    return (
+        <nav className="topbar">
+            <Button icon="arrow-left" text={year-1} onClick={() => dispatch(decrementYear())} />
+            <div>
+                <span>
+                    {centerBar}
+                </span>
+                {numberOfRecipients === 0 ? "" : controls}
+            </div>
+            <Button rightIcon="arrow-right" text={year+1} onClick={() => dispatch(incrementYear())} />
+            <GiftDrawer />
+        </nav>
+    );
 }
 
-function mapStateToProps(state) {
-    return { 
-        year: state.year,
-        people: state.recipients,
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-            incrementYear: () => dispatch(incrementYear()),
-            decrementYear: () => dispatch(decrementYear()),
-            addRecipient: () => dispatch(addNewRecipient()),
-            toggleGiftDrawer: () => dispatch(toggleGiftDrawer()),
-        };
-  };
-
-export default connect(mapStateToProps, mapDispatchToProps)(TopBar)
+export default TopBar

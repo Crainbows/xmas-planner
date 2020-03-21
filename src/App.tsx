@@ -1,5 +1,5 @@
 import React from 'react';
-import Core from './components/core';
+import Core from './pages/core';
 import './App.sass';
 import AppTopBar from './components/AppTopBar';
 import {useSelector} from 'react-redux';

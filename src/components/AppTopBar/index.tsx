@@ -1,3 +1,4 @@
+import { AppState } from "../../reducer";
 import {
     Alignment,
     Button,
@@ -8,14 +9,14 @@ import {
     NavbarHeading,
 } from "@blueprintjs/core";
 import React from "react"
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector, ReactReduxContext } from 'react-redux'
 import {TOGGLE_DARK_MODE} from '../../actions/darkmode';
-import { IconNames } from "@blueprintjs/icons";
+import { IconNames, IconName } from "@blueprintjs/icons";
 
 const AppTopBar = () => {
     const dispatch = useDispatch();
-    const DARKMODE = useSelector(state => state.darkmode);
-    let themeIcon = DARKMODE ? IconNames.FLASH : IconNames.MOON;
+    const DARKMODE = useSelector((state: AppState) => state.darkmode);
+    let themeIcon: IconName = DARKMODE ? IconNames.FLASH : IconNames.MOON;
     return (
     <Navbar>
         <NavbarGroup align={Alignment.LEFT}>
