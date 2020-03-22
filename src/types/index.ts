@@ -1,6 +1,6 @@
 export interface Recipient {
     type?: string,
-    uuid: string,
+    readonly uuid: string,
     gid: number,
     name: string,
     budget: number,
@@ -8,7 +8,7 @@ export interface Recipient {
 
 export interface Gift {
     type?: string,
-    uuid: string,
+    readonly uuid: string,
     recipientid: string,
     name: string,
     year: number,

@@ -4,8 +4,14 @@ import RecipientGiftList from "../RecipientGiftList";
 import RecipientCardMenu from './RecipientCardMenu';
 
 import './recipientCard.scss';
+import { Recipient } from "../../types";
 
-const RecipientCard = props => {
+interface IRecipientCardProps {
+    recipient: Recipient,
+    uuid: string,
+}
+
+const RecipientCard = (props: IRecipientCardProps) => {
     let percentage = Math.random()
     let status = percentage < 0.5 ? Intent.DANGER : percentage < 0.85 ? Intent.WARNING : Intent.SUCCESS;
     return (
