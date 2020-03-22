@@ -6,11 +6,13 @@ import './RecipientList.scss';
 import { Button, NonIdealState, Intent } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
 import { addNewRecipient } from '../../actions/recipient';
+import { AppState } from "../../reducer";
+import { Recipient } from "../../types";
 
 
 const RecipientList = () => {
     const dispatch = useDispatch();
-    const recipients = useSelector(state => state.recipients);
+    const recipients = useSelector((state: AppState) => state.recipients);
  
     let recipientList;
     if (recipients.length === 0){
@@ -28,8 +30,8 @@ const RecipientList = () => {
         action={action}
     />)
     } else {
-        recipientList = Object.keys(recipients).map(key => {
-            return <RecipientCard key={key} uuid={recipients[key].uuid} recipient={recipients[key]}></RecipientCard>;
+        recipientList = recipients.map((recipient: Recipient, key: number,) => {
+            return <RecipientCard key={key} uuid={recipient.uuid} recipient={recipient}></RecipientCard>;
         });
     }
 

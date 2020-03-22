@@ -9,7 +9,7 @@ import {
     NavbarHeading,
 } from "@blueprintjs/core";
 import React from "react"
-import { useDispatch, useSelector, ReactReduxContext } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {TOGGLE_DARK_MODE} from '../../actions/darkmode';
 import { IconNames, IconName } from "@blueprintjs/icons";
 

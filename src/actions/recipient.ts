@@ -1,14 +1,11 @@
 import {CreateUUID} from '../utils/unique';
+import { Recipient } from '../types';
 
 const CREATE_RECIPIENT = 'CREATE_RECIPIENT';
 const UPDATE_RECIPIENT = 'UPDATE_RECIPIENT';
 const DELETE_RECIPIENT = 'DELETE_RECIPIENT';
 
-type Recipient = {
-    uuid: string,
-    name: string,
-    budget: string,
-}
+
 
 const addNewRecipient = () => {
     return {
@@ -20,7 +17,7 @@ const addNewRecipient = () => {
     };
   }
 
-  const updateRecipient = (payload: Recipient) => {
+  const updateRecipient = (payload: Partial<Recipient>) => {
     return {
         type: UPDATE_RECIPIENT,
         uuid: payload.uuid,

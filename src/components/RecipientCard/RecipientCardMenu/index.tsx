@@ -12,20 +12,36 @@ import { Alert,
 import { IconNames } from "@blueprintjs/icons";
 import { deleteRecipient, updateRecipient } from "../../../actions/recipient";
 import { useSelector, useDispatch } from "react-redux";
+import { AppState } from "../../../reducer";
+import { Recipient } from '../../../types';
 
+interface IRecipientCardMenuProps {
+    uuid: string
+}
 
-const RecipientCardMenu = props => {
-    const darkmode = useSelector(state => state.darkmode);
-    const stateRecipient = useSelector(state => state.recipients.filter(person => person.uuid === props.uuid)[0]);
+type IEditUser = Partial<Recipient>;
+
+const RecipientCardMenu = (props: IRecipientCardMenuProps) => {
+    const darkmode = useSelector((state: AppState) => state.darkmode);
+    const stateRecipient = useSelector((state: AppState) => state.recipients.filter(person => person.uuid === props.uuid)[0]);
     const dispatch = useDispatch();
     const [deleteAlertOpen, setdeleteAlertOpen] = useState(false);
     const [editDialogOpen, seteditDialogOpen] = useState(false);
-    const [recipient, setRecipient] = useState(stateRecipient);
+    const [recipient, setRecipient] = useState<IEditUser>(stateRecipient);
 
     const menu = (
         <Menu>
-            <Menu.Item icon={IconNames.EDIT} onClick={() => seteditDialogOpen(true)} text="Edit" />
-            <Menu.Item icon={IconNames.TRASH} onClick={() => setdeleteAlertOpen(true)} text="Delete" intent={Intent.DANGER} />
+            <Menu.Item
+                icon={IconNames.EDIT}
+                onClick={() => seteditDialogOpen(true)}
+                text="Edit"
+            />
+            <Menu.Item
+                icon={IconNames.TRASH}
+                onClick={() => setdeleteAlertOpen(true)}
+                text="Delete"
+                intent={Intent.DANGER}
+            />
         </Menu>
     )
     return (
@@ -41,7 +57,10 @@ const RecipientCardMenu = props => {
                 intent={Intent.DANGER}
                 isOpen={deleteAlertOpen}
                 onCancel={() => setdeleteAlertOpen(false)}
-                onConfirm={() => dispatch(deleteRecipient(props.uuid))}
+                onConfirm={() => {
+                    dispatch(deleteRecipient(props.uuid));
+                    setdeleteAlertOpen(false);
+                }}
                 >
                 <p>
                     Are you sure you want to delete?<br />
@@ -67,14 +86,27 @@ const RecipientCardMenu = props => {
                         labelFor="recipient-name"
                         inline={true}
                     >
-                        <InputGroup onChange={event => setRecipient({name: event.target.value})} defaultValue={recipient.name} id="recipient-name" placeholder="Joe Bloggs" />
+                        <InputGroup
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                setRecipient({...recipient, name: event.target.value})
+                            }}
+                            defaultValue={recipient.name}
+                            id="recipient-name"
+                            placeholder="Joe Bloggs" />
                     </FormGroup>
                     <FormGroup
                         label="Budget"
                         labelFor="recipient-budget"
                         inline={true}
                     >
-                        <InputGroup onChange={event => setRecipient({budget: event.target.value})} defaultValue={recipient.budget} id="recipient-budget" placeholder="20" leftIcon={IconNames.DOLLAR} />
+                        <InputGroup
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                setRecipient({...recipient, budget: Number(event.target.value)})
+                            }}
+                            defaultValue={String(recipient.budget)}
+                            id="recipient-budget"
+                            placeholder="20"
+                            leftIcon={IconNames.DOLLAR} />
                     </FormGroup>
                     <Button intent={Intent.PRIMARY} onClick={() => {
                         dispatch(updateRecipient(recipient));

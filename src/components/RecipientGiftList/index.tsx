@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Collapse, Button } from '@blueprintjs/core';
-import { IconNames } from "@blueprintjs/icons";
+import { IconNames, IconName } from "@blueprintjs/icons";
 import './recipientGiftList.sass';
+import { AppState } from "../../reducer";
+import { Gift } from '../../types'
+// const filterObject = (obj, predicate) => Object.fromEntries(Object.entries(obj).filter(predicate));
 
-const filterObject = (obj, predicate) => Object.fromEntries(Object.entries(obj).filter(predicate));
+interface IRecipientGiftListProps {
+    uuid: string
+}
 
-const RecipientGiftList = props => {
+const RecipientGiftList = (props: IRecipientGiftListProps) => {
     const [expanded, setExpanded] = useState(false);
-    const gifts = useSelector(state => filterObject(state.gifts, ([key, gift]) => gift.recipientid === props.uuid && gift.year === state.year));
+    const gifts = useSelector((state: AppState) => state.gifts.filter((gift: Gift) => gift.recipientid === props.uuid && gift.year === state.year));
     let names = Object.entries(gifts).map(x => x[1].name);
-    let icon = expanded ? IconNames.CHEVRON_UP : IconNames.CHEVRON_DOWN;
+    let icon: IconName = expanded ? IconNames.CHEVRON_UP : IconNames.CHEVRON_DOWN;
     return (
         <div className="giftlist">
             <Collapse isOpen={expanded}>

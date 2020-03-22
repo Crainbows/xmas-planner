@@ -16,13 +16,14 @@ let initalState = {
         }
 
     ],
-    gifts: {
-        pqx: {
+    gifts: [
+        {
+            uuid: "pqx",
             name: "LIPBALM",
             year: 2020,
             recipientid: "x",
         }
-    }
+    ]
 }
 let store = createStore(initalState);
 

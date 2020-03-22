@@ -1,14 +1,7 @@
 import {CREATE_RECIPIENT, UPDATE_RECIPIENT, DELETE_RECIPIENT} from '../actions/recipient';
+import { Recipient } from '../types/';
 
-interface Recipient {
-    type: string,
-    uuid: string,
-    gid: number,
-    name: string,
-    budget: number,
-}
-
-export default(state = [], payload: Recipient) => {
+export default (state: Recipient[] = [], payload: Recipient) : Recipient[] => {
     switch (payload.type) {
         case CREATE_RECIPIENT:
             return [...state,

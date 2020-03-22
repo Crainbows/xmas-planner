@@ -4,7 +4,7 @@ interface GiftDrawer {
     type: string
 }
 
-export default(state = false, payload: GiftDrawer) => {
+export default(state: boolean = false, payload: GiftDrawer) => {
     switch (payload.type) {
         case TOGGLE_GIFT_DRAWER:
             return !state

@@ -1,12 +1,13 @@
 import React from 'react'
+import {AppState} from '../../reducer/';
 import { ControlGroup, Drawer, Classes, InputGroup, Button } from '@blueprintjs/core'
 import { toggleGiftDrawer } from '../../actions/giftDrawer'
 import { useDispatch, useSelector } from 'react-redux';
 
 export const GiftDrawer = () => {
     const dispatch = useDispatch();
-    const darkmode = useSelector(state => state.darkmode);
-    const isOpen = useSelector(state => state.giftDrawer);
+    const darkmode = useSelector((state: AppState) => state.darkmode);
+    const isOpen = useSelector((state: AppState) => state.giftDrawer);
     return (
         <Drawer
                 className={darkmode ? "bp3-dark" : "bp3-light"}
