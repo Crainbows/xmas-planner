@@ -1,7 +1,11 @@
 import {CREATE_RECIPIENT, UPDATE_RECIPIENT, DELETE_RECIPIENT} from '../actions/recipient';
 import { Recipient } from '../types/';
 
-export default (state: Recipient[] = [], payload: Recipient) : Recipient[] => {
+interface RecipientAction extends Recipient {
+    type: string
+}
+
+export default (state: Recipient[] = [], payload: RecipientAction) : Recipient[] => {
     switch (payload.type) {
         case CREATE_RECIPIENT:
             return [...state,

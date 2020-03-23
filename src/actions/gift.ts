@@ -1,17 +1,9 @@
 import {CreateUUID} from '../utils/unique';
+import { Gift } from '../types';
 
 const ADD_GIFT = 'ADD_GIFT'
 const UPDATE_GIFT = 'UPDATE_GIFT'
 
-type Gift = {
-    recipientid: string,
-    name: string,
-    price: string,
-    isPurchased: boolean,
-    isDelivered: boolean,
-    isWrapped: boolean,
-    isMade: boolean,
-}
 
 const addGift = (gift: Gift) => {
     // console.log('adding item:', gift.name);

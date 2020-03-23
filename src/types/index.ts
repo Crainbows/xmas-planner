@@ -1,5 +1,4 @@
 export interface Recipient {
-    type?: string,
     readonly uuid: string,
     gid: number,
     name: string,
@@ -7,7 +6,6 @@ export interface Recipient {
 }
 
 export interface Gift {
-    type?: string,
     readonly uuid: string,
     recipientid: string,
     name: string,

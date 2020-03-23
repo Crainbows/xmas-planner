@@ -1,34 +1,38 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Collapse, Button } from '@blueprintjs/core';
+import { Collapse, Button } from "@blueprintjs/core";
 import { IconNames, IconName } from "@blueprintjs/icons";
-import './recipientGiftList.sass';
+import "./recipientGiftList.sass";
 import { AppState } from "../../reducer";
-import { Gift } from '../../types'
-// const filterObject = (obj, predicate) => Object.fromEntries(Object.entries(obj).filter(predicate));
+import { Gift } from "../../types";
+import GiftItem from "../GiftItem";
+// import { findAllIndexes } from '../../utils/array'
 
 interface IRecipientGiftListProps {
-    uuid: string
+  uuid: string;
 }
 
 const RecipientGiftList = (props: IRecipientGiftListProps) => {
-    const [expanded, setExpanded] = useState(false);
-    const gifts = useSelector((state: AppState) => state.gifts.filter((gift: Gift) => gift.recipientid === props.uuid && gift.year === state.year));
-    let names = Object.entries(gifts).map(x => x[1].name);
-    let icon: IconName = expanded ? IconNames.CHEVRON_UP : IconNames.CHEVRON_DOWN;
-    return (
-        <div className="giftlist">
-            <Collapse isOpen={expanded}>
-                {names}
-                TEST TEXT<br />
-                TEST TEXT<br />
-                TEST TEXT<br />
-                TEST TEXT<br />
-                TEST TEXT<br />
-            </Collapse>
-            <Button className="expand-gift-list" icon={icon} minimal={true} onClick={() => setExpanded(!expanded)} />
-        </div>
+  const [expanded, setExpanded] = useState(false);
+  const gifts = useSelector((state: AppState) =>
+    state.gifts.filter(
+      (gift: Gift) =>
+        gift.recipientid === props.uuid && gift.year === state.year
     )
-}
+  );
+  let names = gifts.map((gift: Gift) => <GiftItem gift={gift} />);
+  let icon: IconName = expanded ? IconNames.CHEVRON_UP : IconNames.CHEVRON_DOWN;
+  return (
+    <div className="giftlist">
+      <Collapse isOpen={expanded}>{names}</Collapse>
+      <Button
+        className="expand-gift-list"
+        icon={icon}
+        minimal={true}
+        onClick={() => setExpanded(!expanded)}
+      />
+    </div>
+  );
+};
 
-export default RecipientGiftList
+export default RecipientGiftList;
