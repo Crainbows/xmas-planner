@@ -4,7 +4,9 @@ import RecipientGiftList from "../RecipientGiftList";
 import RecipientCardMenu from "./RecipientCardMenu";
 
 import "./recipientCard.scss";
-import { Recipient } from "../../types";
+import { Recipient, Gift } from "../../types";
+import { useSelector } from "react-redux";
+import { AppState } from "../../reducer";
 
 interface IRecipientCardProps {
   recipient: Recipient;
@@ -12,7 +14,20 @@ interface IRecipientCardProps {
 }
 
 const RecipientCard = (props: IRecipientCardProps) => {
-  let percentage = Math.random();
+  const gifts = useSelector((state: AppState) =>
+    state.gifts.filter(
+      (gift: Gift) =>
+        gift.recipientid === props.uuid && gift.year === state.year
+    )
+  );
+  const totalGifts = gifts.reduce(
+    (acc: number, gift: Gift) => acc + gift.price,
+    0
+  );
+  let percentage =
+    totalGifts < props.recipient.budget
+      ? totalGifts / props.recipient.budget
+      : 1;
   let status =
     percentage < 0.5
       ? Intent.DANGER
@@ -26,7 +41,9 @@ const RecipientCard = (props: IRecipientCardProps) => {
       className="recipient-card"
     >
       <h4>{props.recipient.name}</h4>
-      <div>{props.recipient.budget}</div>
+      <div>
+        {totalGifts}&nbsp;/&nbsp;{props.recipient.budget}
+      </div>
       <RecipientCardMenu uuid={props.uuid}></RecipientCardMenu>
       <ProgressBar
         animate={false}

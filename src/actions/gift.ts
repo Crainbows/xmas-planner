@@ -8,14 +8,16 @@ const addGift = (gift: Gift) => {
   // console.log('adding item:', gift.name);
   return {
     type: ADD_GIFT,
-    uuid: CreateUUID(),
-    recipientuuid: gift.recipientid,
-    name: gift.name,
-    price: gift.price,
-    isPurchased: false,
-    isDelivered: false,
-    isWrapped: false,
-    isMade: false,
+    gift: {
+      uuid: CreateUUID(),
+      recipientid: gift.recipientid,
+      name: gift.name,
+      price: gift.price,
+      isPurchased: false,
+      isDelivered: false,
+      isWrapped: false,
+      isMade: false,
+    },
   };
 };
 
@@ -23,14 +25,16 @@ const updateGift = (gift: Gift) => {
   // console.log('updating item:', gift.name);
   return {
     type: UPDATE_GIFT,
-    uuid: CreateUUID(),
-    recipientuuid: gift.recipientid,
-    name: gift.name,
-    price: gift.price,
-    isPurchased: gift.isPurchased,
-    isDelivered: gift.isDelivered,
-    isWrapped: gift.isWrapped,
-    isMade: gift.isMade,
+    gift: {
+      uuid: gift.uuid,
+      recipientid: gift.recipientid,
+      name: gift.name,
+      price: gift.price,
+      isPurchased: gift.isPurchased,
+      isDelivered: gift.isDelivered,
+      isWrapped: gift.isWrapped,
+      isMade: gift.isMade,
+    },
   };
 };
 

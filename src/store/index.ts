@@ -25,7 +25,7 @@ let initialState: any = {
   recipients: [
     {
       name: "jim",
-      budget: 12,
+      budget: 42,
       uuid: "x",
     },
   ],
@@ -34,12 +34,34 @@ let initialState: any = {
       uuid: "pqx",
       name: "LIPBALM",
       year: 2020,
+      price: 19.99,
+      recipientid: "x",
+    },
+    {
+      uuid: "z",
+      name: "Another Lipbalm",
+      year: 2020,
+      price: 19.99,
+      recipientid: "",
+    },
+    {
+      uuid: "fhcvnbcv",
+      name: "Mushrooms",
+      year: 2020,
+      price: 19.99,
+      recipientid: "x",
+    },
+    {
+      uuid: "asfdas",
+      name: "Yet Another Lipbalm",
+      year: 2020,
+      price: 19.99,
       recipientid: "x",
     },
   ],
 };
 
-const persistedState = Object.assign(initialState, loadFromLocalStorage());
+const persistedState = { ...initialState, ...loadFromLocalStorage() };
 
 const store = createReduxStore(
   rootReducer,

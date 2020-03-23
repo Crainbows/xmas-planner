@@ -20,7 +20,9 @@ const RecipientGiftList = (props: IRecipientGiftListProps) => {
         gift.recipientid === props.uuid && gift.year === state.year
     )
   );
-  let names = gifts.map((gift: Gift) => <GiftItem gift={gift} />);
+  let names = gifts.map((gift: Gift) => (
+    <GiftItem key={gift.uuid} gift={gift} />
+  ));
   let icon: IconName = expanded ? IconNames.CHEVRON_UP : IconNames.CHEVRON_DOWN;
   return (
     <div className="giftlist">
