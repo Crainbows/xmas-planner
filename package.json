@@ -44,8 +44,15 @@
       "last 1 safari version"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "devDependencies": {
     "faker": "^4.1.0",
-    "prettier": "2.0.1"
+    "husky": "^4.2.3",
+    "prettier": "2.0.1",
+    "pretty-quick": "^2.0.1"
   }
 }

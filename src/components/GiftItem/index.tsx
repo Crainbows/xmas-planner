@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Icon } from "@blueprintjs/core";
+import { Card, Icon, Button } from "@blueprintjs/core";
 import { Gift } from "../../types";
 import { IconNames } from "@blueprintjs/icons";
 
@@ -11,6 +11,7 @@ const GiftItem = (props: IGiftItem) => {
   return (
     <Card>
       {props.gift.name}
+      <Button minimal={true}>TEST</Button>
       <Icon icon={IconNames.DOLLAR} />
       <Icon icon={IconNames.COMPRESSED} />
       <Icon icon={IconNames.BOX} />
