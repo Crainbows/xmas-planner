@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   darkmode,
   recipients,
   gifts,
-  year
+  year,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

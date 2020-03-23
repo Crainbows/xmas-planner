@@ -23,6 +23,7 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
+    "pretty": "prettier --write \"./**/*.{js,jsx,json,ts,tsx}\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -44,6 +45,7 @@
     ]
   },
   "devDependencies": {
-    "faker": "^4.1.0"
+    "faker": "^4.1.0",
+    "prettier": "2.0.1"
   }
 }

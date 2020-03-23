@@ -20,8 +20,8 @@ export default (state: Gift[] = [], payload: GiftAction): Gift[] => {
           isPurchased: payload.isPurchased, //dollar
           isDelivered: payload.isDelivered, //box
           isWrapped: payload.isWrapped, //compressed
-          isMade: payload.isMade //build
-        }
+          isMade: payload.isMade, //build
+        },
       ];
     default:
       return state;
