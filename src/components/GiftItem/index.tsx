@@ -1,5 +1,5 @@
-import React from "react";
-import { Card, Icon, Button } from "@blueprintjs/core";
+import React, { useState } from "react";
+import { Card, Button, Intent, ButtonGroup } from "@blueprintjs/core";
 import { Gift } from "../../types";
 import { IconNames } from "@blueprintjs/icons";
 
@@ -8,14 +8,39 @@ export interface IGiftItem {
 }
 
 const GiftItem = (props: IGiftItem) => {
+  const [isPurchased, setisPurchased] = useState(false);
+  const [isDelivered, setisDelivered] = useState(false);
+  const [isWrapped, setisWrapped] = useState(false);
+  const [isMade, setisMade] = useState(false);
   return (
     <Card>
-      {props.gift.name}
-      <Button minimal={true}>TEST</Button>
-      <Icon icon={IconNames.DOLLAR} />
-      <Icon icon={IconNames.COMPRESSED} />
-      <Icon icon={IconNames.BOX} />
-      <Icon icon={IconNames.BUILD} />
+      <h4>{props.gift.name}</h4>
+      <ButtonGroup>
+        <Button
+          minimal={true}
+          intent={isPurchased ? Intent.SUCCESS : Intent.DANGER}
+          onClick={() => setisPurchased(!isPurchased)}
+          icon={IconNames.DOLLAR}
+        />
+        <Button
+          minimal={true}
+          intent={isDelivered ? Intent.SUCCESS : Intent.DANGER}
+          onClick={() => setisDelivered(!isDelivered)}
+          icon={IconNames.COMPRESSED}
+        />
+        <Button
+          minimal={true}
+          intent={isWrapped ? Intent.SUCCESS : Intent.DANGER}
+          onClick={() => setisWrapped(!isWrapped)}
+          icon={IconNames.BOX}
+        />
+        <Button
+          minimal={true}
+          intent={isMade ? Intent.SUCCESS : Intent.DANGER}
+          onClick={() => setisMade(!isMade)}
+          icon={IconNames.BUILD}
+        />
+      </ButtonGroup>
     </Card>
   );
 };
