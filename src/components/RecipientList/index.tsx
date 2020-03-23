@@ -8,11 +8,18 @@ import { IconNames } from "@blueprintjs/icons";
 import { addNewRecipient } from "../../actions/recipient";
 import { AppState } from "../../reducer";
 import { Recipient } from "../../types";
+import { openGiftDrawer } from "../../actions/giftDrawer";
+import { useDrop } from "react-dnd";
 
 const RecipientList = () => {
   const dispatch = useDispatch();
   const recipients = useSelector((state: AppState) => state.recipients);
-
+  const [, dropRef] = useDrop({
+    accept: "GiftItem",
+    hover: (item) => {
+      dispatch(openGiftDrawer());
+    },
+  });
   let recipientList;
   if (recipients.length === 0) {
     let action = (
@@ -42,7 +49,12 @@ const RecipientList = () => {
     });
   }
 
-  return <div className="recipient-list">{recipientList}</div>;
+  return (
+    <>
+      <div className="recipient-list">{recipientList}</div>
+      <div ref={dropRef} className="trigger-drawer"></div>
+    </>
+  );
 };
 
 export default RecipientList;

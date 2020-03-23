@@ -11,6 +11,7 @@ import { toggleGiftDrawer } from "../../actions/giftDrawer";
 import { useDispatch, useSelector } from "react-redux";
 import { Gift } from "../../types";
 import GiftItem from "../GiftItem";
+import { useDrop } from "react-dnd";
 
 export const GiftDrawer = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,10 @@ export const GiftDrawer = () => {
     state.gifts.filter((gift: Gift) => gift.recipientid === "")
   );
 
+  const [, dropRef] = useDrop({
+    accept: "GiftItem",
+    drop: () => ({ name: "GiftDrawer" }),
+  });
   return (
     <Drawer
       className={darkmode ? "bp3-dark" : "bp3-light"}
@@ -32,9 +37,8 @@ export const GiftDrawer = () => {
       canOutsideClickClose={true}
       enforceFocus={true}
       hasBackdrop={true}
-      usePortal={true}
     >
-      <div className={Classes.DRAWER_BODY}>
+      <div ref={dropRef} className={Classes.DRAWER_BODY}>
         <div className={Classes.DIALOG_BODY}>
           <ControlGroup fill={true}>
             <InputGroup

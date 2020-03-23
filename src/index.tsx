@@ -3,12 +3,16 @@ import ReactDOM from "react-dom";
 import "./index.sass";
 import App from "./App";
 import { Provider } from "react-redux";
+import { DndProvider } from "react-dnd";
+import Backend from "react-dnd-html5-backend";
 
 import store from "./store";
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <DndProvider backend={Backend}>
+      <App />
+    </DndProvider>
   </Provider>,
   document.getElementById("root")
 );

@@ -1,16 +1,24 @@
 .recipient-card {
-  padding-top: 10px;
-  padding-bottom: 10px;
   grid-column-start: 2;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: auto 4rem 1.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 
-  h4, div {
-    margin: 0;
-    align-self: center;
+  .card-header {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto 8rem 1.5rem;
+    h4 {
+      margin: 0;
+      align-self: center;
+    }
+    div {
+      align-self: center;
+    }
+  }
+
+  .bp3-card {
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   .bp3-progress-bar {
@@ -19,7 +27,7 @@
     grid-column-start: 1;
     grid-column-end: 4;
   }
-  
+
   .cardmenu {
     justify-self: center;
     align-self: center;

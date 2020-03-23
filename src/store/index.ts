@@ -56,7 +56,7 @@ let initialState: any = {
       name: "Yet Another Lipbalm",
       year: 2020,
       price: 19.99,
-      recipientid: "x",
+      recipientid: "",
     },
   ],
 };

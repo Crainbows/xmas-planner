@@ -21,19 +21,13 @@ const addGift = (gift: Gift) => {
   };
 };
 
-const updateGift = (gift: Gift) => {
+const updateGift = (gift: Partial<Gift>) => {
   // console.log('updating item:', gift.name);
   return {
     type: UPDATE_GIFT,
     gift: {
       uuid: gift.uuid,
-      recipientid: gift.recipientid,
-      name: gift.name,
-      price: gift.price,
-      isPurchased: gift.isPurchased,
-      isDelivered: gift.isDelivered,
-      isWrapped: gift.isWrapped,
-      isMade: gift.isMade,
+      ...gift,
     },
   };
 };

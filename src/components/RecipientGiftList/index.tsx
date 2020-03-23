@@ -30,6 +30,7 @@ const RecipientGiftList = (props: IRecipientGiftListProps) => {
       <Button
         className="expand-gift-list"
         icon={icon}
+        small={true}
         minimal={true}
         onClick={() => setExpanded(!expanded)}
       />
