@@ -1,30 +1,14 @@
-.App
-  text-align: center
+@import "~@blueprintjs/core/lib/scss/variables.scss";
+  
+.app
+  transition-property: color, background-color
+  transition-duration: 0.2s
+  transition-timing-function: linear
 
-.App-logo
-  height: 40vmin
-  pointer-events: none
+.bp3-dark 
+  background-color: $dark-gray3
+  color: $light-gray5
 
-@media (prefers-reduced-motion: no-preference)
-  .App-logo
-    animation: App-logo-spin infinite 20s linear
-
-.App-header
-  background-color: #282c34
-  min-height: 100vh
-  display: flex
-  flex-direction: column
-  align-items: center
-  justify-content: center
-  font-size: calc(10px + 2vmin)
-  color: white
-
-.App-link
-  color: #61dafb
-
-@keyframes App-logo-spin
-  from
-    transform: rotate(0deg)
-
-  to
-    transform: rotate(360deg)
+.bp3-light
+  background-color: $light-gray5
+  color: $dark-gray3
