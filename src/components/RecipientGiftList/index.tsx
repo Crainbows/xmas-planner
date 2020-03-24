@@ -24,16 +24,21 @@ const RecipientGiftList = (props: IRecipientGiftListProps) => {
     <GiftItem key={gift.uuid} gift={gift} />
   ));
   let icon: IconName = expanded ? IconNames.CHEVRON_UP : IconNames.CHEVRON_DOWN;
+  let expandButton = !!gifts.length ? (
+    <Button
+      className="expand-gift-list"
+      icon={icon}
+      small={true}
+      minimal={true}
+      onClick={() => setExpanded(!expanded)}
+    />
+  ) : (
+    ""
+  );
   return (
     <div className="giftlist">
       <Collapse isOpen={expanded}>{names}</Collapse>
-      <Button
-        className="expand-gift-list"
-        icon={icon}
-        small={true}
-        minimal={true}
-        onClick={() => setExpanded(!expanded)}
-      />
+      {expandButton}
     </div>
   );
 };

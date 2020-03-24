@@ -4,8 +4,9 @@ import { Gift } from "../types";
 const ADD_GIFT = "ADD_GIFT";
 const UPDATE_GIFT = "UPDATE_GIFT";
 
-const addGift = (gift: Gift) => {
+const addGift = (gift: Partial<Gift>) => {
   // console.log('adding item:', gift.name);
+  if (!gift.name) return { type: "FAILED_VALIDATION" };
   return {
     type: ADD_GIFT,
     gift: {

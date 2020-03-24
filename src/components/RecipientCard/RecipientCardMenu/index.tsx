@@ -95,6 +95,7 @@ const RecipientCardMenu = (props: IRecipientCardMenuProps) => {
               defaultValue={recipient.name}
               id="recipient-name"
               placeholder="Joe Bloggs"
+              fill={true}
             />
           </FormGroup>
           <FormGroup label="Budget" labelFor="recipient-budget" inline={true}>
@@ -109,6 +110,7 @@ const RecipientCardMenu = (props: IRecipientCardMenuProps) => {
               id="recipient-budget"
               placeholder="20"
               leftIcon={IconNames.DOLLAR}
+              fill={true}
             />
           </FormGroup>
           <Button

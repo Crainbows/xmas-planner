@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AppState } from "../../reducer/";
 import {
   ControlGroup,
@@ -12,6 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Gift } from "../../types";
 import GiftItem from "../GiftItem";
 import { useDrop } from "react-dnd";
+import "./GiftDrawer.sass";
+import { addGift } from "../../actions/gift";
 
 export const GiftDrawer = () => {
   const dispatch = useDispatch();
@@ -20,6 +22,8 @@ export const GiftDrawer = () => {
   const giftList = useSelector((state: AppState) =>
     state.gifts.filter((gift: Gift) => gift.recipientid === "")
   );
+  const initialnewGift = { name: "", price: 0, recipientid: "" };
+  const [newGift, setnewGift] = useState(initialnewGift);
 
   const [, dropRef] = useDrop({
     accept: "GiftItem",
@@ -40,26 +44,42 @@ export const GiftDrawer = () => {
     >
       <div ref={dropRef} className={Classes.DRAWER_BODY}>
         <div className={Classes.DIALOG_BODY}>
-          <ControlGroup fill={true}>
+          <ControlGroup fill={true} className="new-gift">
             <InputGroup
               large={true}
-              // onChange={this.handleFilterChange}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setnewGift({
+                  ...newGift,
+                  name: event.target.value,
+                });
+              }}
               placeholder="New Gift..."
               // rightElement={<Spinner size={Icon.SIZE_STANDARD} />}
-              // value={filterValue}
             />
             <InputGroup
               large={true}
-              // onChange={this.handleFilterChange}
-              placeholder="New Gift..."
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setnewGift({
+                  ...newGift,
+                  price: Number(event.target.value),
+                });
+              }}
+              placeholder="£"
               // rightElement={<Spinner size={Icon.SIZE_STANDARD} />}
-              // value={filterValue}
             />
-            <Button text="Add" />
+            <Button
+              text="Add"
+              onClick={() => {
+                dispatch(addGift(newGift));
+                setnewGift(initialnewGift);
+              }}
+            />
           </ControlGroup>
-          {giftList.map((gift: Gift) => (
-            <GiftItem key={gift.uuid} gift={gift} />
-          ))}
+          <div className="available-gifts">
+            {giftList.map((gift: Gift) => (
+              <GiftItem key={gift.uuid} gift={gift} />
+            ))}
+          </div>
         </div>
       </div>
     </Drawer>

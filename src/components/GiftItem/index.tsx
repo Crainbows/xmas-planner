@@ -21,7 +21,10 @@ const GiftItem = (props: IGiftItem) => {
   const [, dragRef, previewRef] = useDrag({
     item: { type: "GiftItem", uuid: props.gift.uuid },
     begin: () => {
-      dispatch(closeGiftDrawer());
+      // Dragging from the GiftDrawer doesn't work in Chrome without the timeout. :/
+      setTimeout(() => {
+        dispatch(closeGiftDrawer());
+      }, 0);
     },
     end: (
       item: { name: string; uuid: string } | undefined,
