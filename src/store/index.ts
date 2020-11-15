@@ -32,7 +32,7 @@ let initialState: any = {
   gifts: [
     {
       uuid: "pqx",
-      name: "LIPBALM",
+      name: "Chocolate",
       year: 2020,
       price: 19.99,
       recipientid: "x",
@@ -46,7 +46,7 @@ let initialState: any = {
     },
     {
       uuid: "fhcvnbcv",
-      name: "Mushrooms",
+      name: "Grow you own Mushrooms",
       year: 2020,
       price: 19.99,
       recipientid: "x",
